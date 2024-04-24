@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html >
+<html lang="es" >
+<head >
+<!-- Required meta tags -->
+<meta charset="UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+<title > Academia Taekwondo Oriente</title >
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" >
+<!-- Custom CSS -->
+<link rel="stylesheet" href="css/style.css" >
+<!-- Custom Stylesheet -->
+<link rel="stylesheet" href="Estilo/StyleSheet1.css" >
+<!-- Custom Styles for buttons -->
+<style >
+/* Estilos generales */
+body {
+    background-image: url("/imagenes/fondo.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-color: #ffffff; /* Cambiar el color de fondo a blanco */
+    margin: 0 auto;
+    padding-bottom: 6rem;
+    padding-top: 5rem;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    color: #FFA500; /* Cambiar el color del texto a naranja oscuro */
+}
+
+a {
+    color: #FFA500; /* Cambiar el color de los enlaces a naranja oscuro */
+}
+
+    a:hover {
+        color: #FF6725; /* Cambiar el color de los enlaces al pasar el ratón */
+    }
+
+/* Resto de estilos... */
+
+/* Navbar */
+.navbar {
+    height: 70px !important; /* Reducir la altura del navbar */
+}
+
+.navbar-brand {
+    font-size: 20px !important; /* Reducir el tamaño del texto del brand */
+    color: #FFA500 !important; /* Cambiar el color del texto del brand a naranja oscuro */
+    text-align: center;
+    width: 100%;
+}
+
+.navbar-nav .nav-link {
+    font-size: 16px !important; /* Reducir el tamaño del texto de los enlaces */
+    color: #FFA500 !important; /* Cambiar el color del texto de los enlaces a naranja oscuro */
+}
+
+.navbar-nav {
+    margin-right: -15px !important; /* Ajustar el margen derecho para compensar el padding del navbar */
+}
+
+    .navbar-nav .nav-item {
+        margin-left: 5px !important; /* Ajustar el espaciado entre elementos del navbar */
+    }
+
+/* Form Control */
+.form-control {
+    text-align: center;
+    background-color: #ffffff; /* Cambiar el color del fondo de las cajas a blanco */
+    border-color: #ced4da; /* Cambiar el color del borde a gris */
+    color: black; /* Cambiar el color del texto a negro */
+    padding: 0.375rem 0.75rem; /* Reducir el relleno de las cajas */
+    font-size: 1rem; /* Tamaño de fuente */
+}
+
+    .form-control::-webkit-input-placeholder {
+        color: #ced4da; /* Cambiar el color del texto de placeholder a gris */
+    }
+
+    .form-control:-moz-placeholder {
+        color: #ced4da;
+    }
+
+    .form-control::-moz-placeholder {
+        color: #ced4da;
+    }
+
+    .form-control:-ms-input-placeholder {
+        color: #ced4da;
+    }
+
+    .form-control::-ms-input-placeholder {
+        color: #ced4da;
+    }
+
+/* Button */
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    color: white; /* Cambiar el color del texto de los botones a blanco */
+    text-align: center;
+    vertical-align: middle;
+    background-color: transparent; /* Hacer el fondo de los botones transparente */
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-primary {
+    background-color: #FFA500 !important; /* Cambiar el color de fondo del botón primario a naranja oscuro */
+    border-color: #FFA500 !important; /* Cambiar el color del borde del botón primario a naranja oscuro */
+}
+
+    .btn-primary:hover {
+        background-color: #FF6725 !important; /* Cambiar el color de fondo del botón primario al pasar el ratón */
+        border-color: #FF6725 !important; /* Cambiar el color del borde del botón primario al pasar el ratón */
+    }
+
+/* Otros estilos */
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* Estilo para el botón Registrar Pago */
+.btn-warning {
+    background-color: #FFA500;
+    border-color: #FFA500;
+    color: white;
+}
+
+    .btn-warning:hover {
+        background-color: #FFA500; /* Mantener el color al hacer hover */
+    }
+
+
+</style >
+</head >
+
+<main >
+<section class="row" aria-labelledby="aspnetTitle" >
+<!-- Logo de la imagen -->
+<img src="SGATOriente\Imagenes/icono1.jpg" alt="icono1" class="navbar-toggler-icon" / >
+<!-- Formulario de inicio de sesión -->
+<div class="login-form" >
+<h2 > Iniciar sesión</h2 >
+<form action="/Account/Login" method="post" >
+<div class="form-group" >
+<label for="username" > Usuario:</label >
+<input type="text" id="username" name="username" class="form-control" required >
+</div >
+<div class="form-group" >
+<label for="password" > Contraseña:</label >
+<input type="password" id="password" name="password" class="form-control" required >
+</div >
+<button type="submit" class="btn btn-primary" > Iniciar sesión</button >
+</form >
+</div >
+</section >
+</main >
+</html >

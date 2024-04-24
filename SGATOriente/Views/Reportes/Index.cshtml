@@ -1,0 +1,72 @@
+﻿@model IEnumerable<SGATOriente.Models.Reporte>
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="css/style.css">
+<!-- Custom Stylesheet -->
+<link rel="stylesheet" href="Estilo/StyleSheet1.css">
+<!-- Custom Styles for buttons -->
+<style>
+    .btn-primary,
+    .btn-secondary,
+    .btn-info {
+        background-color: #FFA500 !important;
+        border-color: #FFA500 !important;
+        color: white;
+    }
+
+    .navbar-brand {
+        color: #FFA500 !important;
+        text-align: center;
+        width: 100%;
+    }
+
+    body {
+        background-image: url('Imagenes/icono1.jpg');
+        background-size: 75%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+</style>
+</head>
+
+<!-- HU5: Como administrador quiero generar reportes periódicos -->
+<section id="HU5">
+    <h2>Generador de Reportes - Lista de Alumnos Activos</h2>
+
+    <form id="reportForm" method="post">
+        <label for="fecha">Seleccione la fecha:</label>
+        <input type="date" id="fecha" name="fecha">
+        <button type="submit" class="btn btn-primary">Generar Reporte</button>
+    </form>
+
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreCompleto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UltimaFechaPago)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreCompleto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UltimaFechaPago)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.EstudianteID }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.EstudianteID }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.EstudianteID })
+                </td>
+            </tr>
+        }
+
+    </table>

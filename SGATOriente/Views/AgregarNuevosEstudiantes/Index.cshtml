@@ -1,0 +1,145 @@
+﻿@model IEnumerable<SGATOriente.Models.AgregarNuevosEstudiantes>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academia de Taekwondo Oriente</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="Estilo/StyleSheet1.css">
+    <!-- Custom Styles for buttons -->
+    <style>
+        .btn-primary,
+        .btn-secondary,
+        .btn-info {
+            background-color: #FFA500 !important;
+            border-color: #FFA500 !important;
+            color: white;
+        }
+
+        .navbar-brand {
+            color: #FFA500 !important;
+            text-align: center;
+            width: 100%;
+        }
+
+    </style>
+</head>
+
+
+<!-- Header -->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Academia Taekwondo Oriente</a>
+    </nav>
+</header>
+
+
+<!-- Main Content -->
+<main class="container mt-5">
+    <!-- Historias de Usuario -->
+    <!-- HU1: Como administrador quiero poder agregar nuevos estudiantes -->
+    <section id="HU1">
+        <h2> Agregar Nuevos Estudiantes</h2>
+        <!-- Formulario para agregar estudiante -->
+        <form>
+            <div class="form-group">
+                <label for="nombreEstudiante">Nombre Completo del Estudiante.</label>
+                <input type="text" class="form-control" id="nombreEstudiante" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+                <label for="numeroEstudiante">Número de Teléfono del Estudiante o Encargado.</label>
+                <input type="number" class="form-control" id="numeroEstudiante" placeholder="Número">
+            </div>
+            <div class="form-group">
+                <label for="direccionEstudiante">Dirección del Estudiante.</label>
+                <input type="text" class="form-control" id="direccionEstudiante" placeholder="Dirección">
+            </div>
+            <div class="form-group">
+                <label for="ingresoEstudiante">Fecha de Ingreso del Estudiante.</label>
+                <input type="date" class="form-control" id="IngresoEstudiante" placeholder="Ingreso">
+            </div>
+            <div class="form-group">
+                <label for="edadEstudiante">Edad del Estudiante.</label>
+                <input type="number" class="form-control" id="edadEstudiante" placeholder="Edad">
+            </div>
+            <div class="form-group">
+                <label for="fechaNacimientoEstudiante">Fecha de Nacimiento del Estudiante.</label>
+                <input type="date" class="form-control" id="fechaNacimientoEstudiante" placeholder="Nacimiento">
+            </div>
+            <div class="form-group">
+                <label for="padecimientoEstudiante">Padecimientos del Estudiante.</label>
+                <input type="text" class="form-control" id="padecimientoEstudiante" placeholder="Padecimientos">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Agregar Estudiante</button>
+        </form>
+    </section>    <h2> </h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreCompleto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroTelefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaIngreso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Edad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaNacimiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Padecimientos)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreCompleto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumeroTelefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Direccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaIngreso.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Edad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaNacimiento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Padecimientos)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.EstudianteID }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.EstudianteID }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.EstudianteID })
+                </td>
+            </tr>
+        }
+
+    </table>

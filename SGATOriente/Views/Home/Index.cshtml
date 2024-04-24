@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Academia Taekwondo Oriente";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="Estilo/StyleSheet1.css">
+    <!-- Custom Styles for buttons -->
+    <style>
+        .btn-primary,
+        .btn-secondary,
+        .btn-info {
+            background-color: #FFA500 !important;
+            border-color: #FFA500 !important;
+            color: white;
+        }
+
+        .navbar-brand {
+            color: #FFA500 !important;
+            text-align: center;
+            width: 100%;
+        }
+
+        body {
+            background-size: 75%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    </style>
+</head>
+
+<main>
+    <section class="row" aria-labelledby="aspnetTitle">
+        <!-- Logo de la imagen -->
+        <img src="SGATOriente\Imagenes/icono1.jpg" alt="icono1" class="navbar-toggler-icon" />
+
+        <!-- Formulario de inicio de sesión -->
+        <div class="login-form">
+            <h2>Iniciar sesión</h2>
+            <form action="/Account/Login" method="post">
+                <div class="form-group">
+                    <label for="username">Usuario:</label>
+                    <input type="text" id="username" name="username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+            </form>
+        </div>
+    </section>
+</main>
+</html>

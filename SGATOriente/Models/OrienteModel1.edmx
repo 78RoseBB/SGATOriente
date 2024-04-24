@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SGATOrienteDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AgregarNuevosEstudiantes">
+          <Key>
+            <PropertyRef Name="EstudianteID" />
+          </Key>
+          <Property Name="EstudianteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreCompleto" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NumeroTelefono" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="FechaIngreso" Type="date" Nullable="false" />
+          <Property Name="Edad" Type="int" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="date" Nullable="false" />
+          <Property Name="Padecimientos" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="ImagenesCarrusel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreArchivo" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="500" />
+          <Property Name="FechaCreacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ImagenFondo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreArchivo" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="500" />
+          <Property Name="FechaCreacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ModificarAlumnos">
+          <Key>
+            <PropertyRef Name="AlumnoId" />
+          </Key>
+          <Property Name="AlumnoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="NumeroTelefono" Type="nvarchar" MaxLength="20" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Notificaciones">
+          <Key>
+            <PropertyRef Name="NotificacionID" />
+          </Key>
+          <Property Name="NotificacionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoNotificacion" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Mensaje" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FechaEnvio" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PagosEstudiantes">
+          <Key>
+            <PropertyRef Name="PagoID" />
+          </Key>
+          <Property Name="PagoID" Type="int" Nullable="false" />
+          <Property Name="EstudianteID" Type="int" />
+          <Property Name="Monto" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="FechaPago" Type="date" />
+        </EntityType>
+        <EntityType Name="ProgresoEstudiantes">
+          <Key>
+            <PropertyRef Name="ProgresoID" />
+          </Key>
+          <Property Name="ProgresoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreEstudiante" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CambioGrado" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FechaExamen" Type="date" Nullable="false" />
+          <Property Name="NivelAlcanzado" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RecursosEducacionales">
+          <Key>
+            <PropertyRef Name="RecursoID" />
+          </Key>
+          <Property Name="RecursoID" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="URL" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Reporte">
+          <Key>
+            <PropertyRef Name="EstudianteID" />
+          </Key>
+          <Property Name="EstudianteID" Type="int" Nullable="false" />
+          <Property Name="NombreCompleto" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="UltimaFechaPago" Type="date" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_EstudianteID">
+          <End Role="AgregarNuevosEstudiantes" Type="Self.AgregarNuevosEstudiantes" Multiplicity="0..1" />
+          <End Role="PagosEstudiantes" Type="Self.PagosEstudiantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgregarNuevosEstudiantes">
+              <PropertyRef Name="EstudianteID" />
+            </Principal>
+            <Dependent Role="PagosEstudiantes">
+              <PropertyRef Name="EstudianteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SGATOrienteDBModelStoreContainer">
+          <EntitySet Name="AgregarNuevosEstudiantes" EntityType="Self.AgregarNuevosEstudiantes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImagenesCarrusel" EntityType="Self.ImagenesCarrusel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImagenFondo" EntityType="Self.ImagenFondo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ModificarAlumnos" EntityType="Self.ModificarAlumnos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notificaciones" EntityType="Self.Notificaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PagosEstudiantes" EntityType="Self.PagosEstudiantes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProgresoEstudiantes" EntityType="Self.ProgresoEstudiantes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecursosEducacionales" EntityType="Self.RecursosEducacionales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reporte" EntityType="Self.Reporte" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_EstudianteID" Association="Self.FK_EstudianteID">
+            <End Role="AgregarNuevosEstudiantes" EntitySet="AgregarNuevosEstudiantes" />
+            <End Role="PagosEstudiantes" EntitySet="PagosEstudiantes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SGATOrienteDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AgregarNuevosEstudiantes">
+          <Key>
+            <PropertyRef Name="EstudianteID" />
+          </Key>
+          <Property Name="EstudianteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreCompleto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NumeroTelefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Edad" Type="Int32" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Padecimientos" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PagosEstudiantes" Relationship="Self.FK_EstudianteID" FromRole="AgregarNuevosEstudiantes" ToRole="PagosEstudiantes" />
+        </EntityType>
+        <EntityType Name="ImagenesCarrusel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreArchivo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ImagenFondo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreArchivo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ModificarAlumnos">
+          <Key>
+            <PropertyRef Name="AlumnoId" />
+          </Key>
+          <Property Name="AlumnoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NumeroTelefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Notificaciones">
+          <Key>
+            <PropertyRef Name="NotificacionID" />
+          </Key>
+          <Property Name="NotificacionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoNotificacion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mensaje" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaEnvio" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="PagosEstudiantes">
+          <Key>
+            <PropertyRef Name="PagoID" />
+          </Key>
+          <Property Name="PagoID" Type="Int32" Nullable="false" />
+          <Property Name="EstudianteID" Type="Int32" />
+          <Property Name="Monto" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="FechaPago" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="AgregarNuevosEstudiantes" Relationship="Self.FK_EstudianteID" FromRole="PagosEstudiantes" ToRole="AgregarNuevosEstudiantes" />
+        </EntityType>
+        <EntityType Name="ProgresoEstudiantes">
+          <Key>
+            <PropertyRef Name="ProgresoID" />
+          </Key>
+          <Property Name="ProgresoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreEstudiante" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CambioGrado" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaExamen" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NivelAlcanzado" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RecursosEducacionales">
+          <Key>
+            <PropertyRef Name="RecursoID" />
+          </Key>
+          <Property Name="RecursoID" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="URL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Reporte">
+          <Key>
+            <PropertyRef Name="EstudianteID" />
+          </Key>
+          <Property Name="EstudianteID" Type="Int32" Nullable="false" />
+          <Property Name="NombreCompleto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UltimaFechaPago" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <Association Name="FK_EstudianteID">
+          <End Role="AgregarNuevosEstudiantes" Type="Self.AgregarNuevosEstudiantes" Multiplicity="0..1" />
+          <End Role="PagosEstudiantes" Type="Self.PagosEstudiantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgregarNuevosEstudiantes">
+              <PropertyRef Name="EstudianteID" />
+            </Principal>
+            <Dependent Role="PagosEstudiantes">
+              <PropertyRef Name="EstudianteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SGATOrienteDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AgregarNuevosEstudiantes" EntityType="Self.AgregarNuevosEstudiantes" />
+          <EntitySet Name="ImagenesCarrusel" EntityType="Self.ImagenesCarrusel" />
+          <EntitySet Name="ImagenFondo" EntityType="Self.ImagenFondo" />
+          <EntitySet Name="ModificarAlumnos" EntityType="Self.ModificarAlumnos" />
+          <EntitySet Name="Notificaciones" EntityType="Self.Notificaciones" />
+          <EntitySet Name="PagosEstudiantes" EntityType="Self.PagosEstudiantes" />
+          <EntitySet Name="ProgresoEstudiantes" EntityType="Self.ProgresoEstudiantes" />
+          <EntitySet Name="RecursosEducacionales" EntityType="Self.RecursosEducacionales" />
+          <EntitySet Name="Reporte" EntityType="Self.Reporte" />
+          <AssociationSet Name="FK_EstudianteID" Association="Self.FK_EstudianteID">
+            <End Role="AgregarNuevosEstudiantes" EntitySet="AgregarNuevosEstudiantes" />
+            <End Role="PagosEstudiantes" EntitySet="PagosEstudiantes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SGATOrienteDBModelStoreContainer" CdmEntityContainer="SGATOrienteDBEntities">
+          <EntitySetMapping Name="AgregarNuevosEstudiantes">
+            <EntityTypeMapping TypeName="SGATOrienteDBModel.AgregarNuevosEstudiantes">
+              <MappingFragment StoreEntitySet="AgregarNuevosEstudiantes">
+                <ScalarProperty Name="EstudianteID" ColumnName="EstudianteID" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="NumeroTelefono" ColumnName="NumeroTelefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Padecimientos" ColumnName="Padecimientos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImagenesCarrusel">
+            <EntityTypeMapping TypeName="SGATOrienteDBModel.ImagenesCarrusel">
+              <MappingFragment StoreEntitySet="ImagenesCarrusel">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NombreArchivo" ColumnName="NombreArchivo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImagenFondo">
+            <EntityTypeMapping TypeName="SGATOrienteDBModel.ImagenFondo">
+              <MappingFragment StoreEntitySet="ImagenFondo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NombreArchivo" ColumnName="NombreArchivo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ModificarAlumnos">
+            <EntityTypeMapping TypeName="SGATOrienteDBModel.ModificarAlumnos">
+              <MappingFragment StoreEntitySet="ModificarAlumnos">
+                <ScalarProperty Name="AlumnoId" ColumnName="AlumnoId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="NumeroTelefono" ColumnName="NumeroTelefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notificaciones">
+            <EntityTypeMapping TypeName="SGATOrienteDBModel.Notificaciones">
+              <MappingFragment StoreEntitySet="Notificaciones">
+                <ScalarProperty Name="NotificacionID" ColumnName="NotificacionID" />
+                <ScalarProperty Name="TipoNotificacion" ColumnName="TipoNotificacion" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+                <ScalarProperty Name="FechaEnvio" ColumnName="FechaEnvio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PagosEstudiantes">
+            <EntityTypeMapping TypeName="SGATOrienteDBModel.PagosEstudiantes">
+              <MappingFragment StoreEntitySet="PagosEstudiantes">
+                <ScalarProperty Name="PagoID" ColumnName="PagoID" />
+                <ScalarProperty Name="EstudianteID" ColumnName="EstudianteID" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProgresoEstudiantes">
+            <EntityTypeMapping TypeName="SGATOrienteDBModel.ProgresoEstudiantes">
+              <MappingFragment StoreEntitySet="ProgresoEstudiantes">
+                <ScalarProperty Name="ProgresoID" ColumnName="ProgresoID" />
+                <ScalarProperty Name="NombreEstudiante" ColumnName="NombreEstudiante" />
+                <ScalarProperty Name="CambioGrado" ColumnName="CambioGrado" />
+                <ScalarProperty Name="FechaExamen" ColumnName="FechaExamen" />
+                <ScalarProperty Name="NivelAlcanzado" ColumnName="NivelAlcanzado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecursosEducacionales">
+            <EntityTypeMapping TypeName="SGATOrienteDBModel.RecursosEducacionales">
+              <MappingFragment StoreEntitySet="RecursosEducacionales">
+                <ScalarProperty Name="RecursoID" ColumnName="RecursoID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reporte">
+            <EntityTypeMapping TypeName="SGATOrienteDBModel.Reporte">
+              <MappingFragment StoreEntitySet="Reporte">
+                <ScalarProperty Name="EstudianteID" ColumnName="EstudianteID" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="UltimaFechaPago" ColumnName="UltimaFechaPago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

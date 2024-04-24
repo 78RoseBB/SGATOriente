@@ -1,0 +1,64 @@
+﻿@model IEnumerable<SGATOriente.Models.RecursosEducacionale>
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="css/style.css">
+<!-- Custom Stylesheet -->
+<link rel="stylesheet" href="Estilo/StyleSheet1.css">
+<!-- Custom Styles for buttons -->
+<style>
+    .btn-primary,
+    .btn-secondary,
+    .btn-info {
+        background-color: #FFA500 !important;
+        border-color: #FFA500 !important;
+        color: white;
+    }
+
+    .navbar-brand {
+        color: #FFA500 !important;
+        text-align: center;
+        width: 100%;
+    }
+
+    body {
+        background-image: url('Imagenes/icono1.jpg');
+        background-size: 75%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+</style>
+</head>
+
+<!-- HU6: Como estudiante quiero tener acceso a recursos educativos -->
+<section id="HU6">
+    <h2>Recursos Educativos</h2>
+    <p>Para tu ayuda tenemos los siguientes recursos educativos:</p>
+</section>
+
+<table class="table">
+    <tr>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Acción
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a href="@item.URL" target="_blank">
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </a>
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.RecursoID }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.RecursoID }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.RecursoID })
+            </td>
+        </tr>
+    }
+</table>

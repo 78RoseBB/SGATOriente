@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="Estilo/StyleSheet1.css">
+    <!-- Custom Styles for buttons -->
+    <style>
+        .btn-primary,
+        .btn-secondary,
+        .btn-info {
+            background-color: #FFA500 !important;
+            border-color: #FFA500 !important;
+            color: white;
+        }
+
+        .navbar-brand {
+            color: #FFA500 !important;
+            text-align: center;
+            width: 100%;
+        }
+
+        body {
+            background-image: url('Imagenes/icono1.jpg');
+            background-size: 75%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <div class="container">
+            @Html.ActionLink("Academia Taekwondo Oriente", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li>@Html.ActionLink("Inicio de Sesión", "Login", "Account", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Agregar Nuevos Estudiantes", "Index", "AgregarNuevosEstudiantes", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Notificaciones", "Index", "Notificaciones", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Pagos", "Index", "PagosEstudiantes", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Progreso", "Index", "ProgresoEstudiantes", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Recursos", "Index", "RecursosEducacionales", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Reportes", "Index", "Reportes", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Salir", "Logout", "Account", new { area = "" }, new { @class = "nav-link" })</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

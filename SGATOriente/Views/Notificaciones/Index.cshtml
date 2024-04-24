@@ -1,0 +1,97 @@
+﻿@model IEnumerable<SGATOriente.Models.Notificaciones>
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="css/style.css">
+<!-- Custom Stylesheet -->
+<link rel="stylesheet" href="Estilo/StyleSheet1.css">
+<!-- Custom Styles for buttons -->
+<style>
+    .btn-primary,
+    .btn-secondary,
+    .btn-info {
+        background-color: #FFA500 !important;
+        border-color: #FFA500 !important;
+        color: white;
+    }
+
+    .navbar-brand {
+        color: #FFA500 !important;
+        text-align: center;
+        width: 100%;
+    }
+
+    body {
+        background-image: url('Imagenes/icono1.jpg');
+        background-size: 75%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+</style>
+</head>
+
+<!-- HU4: Como padre/madre quiero recibir notificaciones automáticas -->
+<section id="HU4">
+    <h2> Notificaciones Importantes para los Alumnos y Encargados </h2>
+    <!-- Formulario para enviar notificaciones -->
+    <form id="notificacionForm">
+        <div class="form-group">
+            <label for="tipoNotificacion">Tipo de Notificación:</label>
+            <select class="form-control" id="tipoNotificacion">
+                <option value="todos">A todos los alumnos</option>
+                <option value="pendientes">Solo a los alumnos con pagos pendientes</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="mensajeNotificacion">Mensaje:</label>
+            <textarea class="form-control" id="mensajeNotificacion" rows="3" placeholder="Escribe tu mensaje aquí"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar Notificación</button>
+        <button type="button" class="btn btn-success" id="enviarWhatsapp">Enviar por Whatsapp</button>
+    </form>
+</section>
+
+<!-- HU3: Como estudiante quiero poder ver mi horario de clases -->
+<section id="HU3">
+    <h2> Horario de las Clases</h2>
+    <!-- Contenedor de horarios -->
+    <div class="horario-container">
+        <!-- Horario 1 -->
+        <div class="horario">
+            <h3>Menores de 12 años</h3>
+            <p><strong>Días:</strong> Martes y Jueves</p>
+            <p><strong>Hora:</strong> 6:30pm - 7:30pm</p>
+        </div>
+        <!-- Horario 2 -->
+        <div class="horario">
+            <h3>Mayores de 12 años</h3>
+            <p><strong>Días:</strong> Martes y Jueves</p>
+            <p><strong>Hora:</strong> 7:45pm - 8:45pm</p>
+        </div>
+    </div>
+</section>
+
+<!-- Script para enviar notificaciones -->
+<script>
+    document.getElementById('notificacionForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Evita el envío del formulario por defecto
+
+        // Obtiene el tipo de notificación seleccionado por el usuario
+        var tipoNotificacion = document.getElementById('tipoNotificacion').value;
+
+        // Obtiene el mensaje de la notificación
+        var mensajeNotificacion = document.getElementById('mensajeNotificacion').value;
+        console.log('Enviando notificación:', tipoNotificacion, 'Mensaje:', mensajeNotificacion);
+    });
+
+    // Script para enviar por Whatsapp
+    document.getElementById('enviarWhatsapp').addEventListener('click', function () {
+        var mensaje = document.getElementById('mensajeNotificacion').value;
+        console.log('Enviando mensaje por Whatsapp:', mensaje);
+    });
+</script>
+
+
+
+
+
+

@@ -1,0 +1,50 @@
+﻿@model SGATOriente.Models.ProgresoEstudiante
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ProgresoEstudiante</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreEstudiante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreEstudiante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CambioGrado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CambioGrado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaExamen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaExamen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NivelAlcanzado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NivelAlcanzado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProgresoID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

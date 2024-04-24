@@ -1,0 +1,99 @@
+﻿@model IEnumerable<SGATOriente.Models.ProgresoEstudiante>
+<!-- Custom CSS -->
+<link rel="stylesheet" href="css/style.css">
+<!-- Custom Stylesheet -->
+<link rel="stylesheet" href="Estilo/StyleSheet1.css">
+<!-- Custom Styles for buttons -->
+<style>
+    .btn-primary,
+    .btn-secondary,
+    .btn-info {
+        background-color: #FFA500 !important;
+        border-color: #FFA500 !important;
+        color: white;
+    }
+
+    .navbar-brand {
+        color: #FFA500 !important;
+        text-align: center;
+        width: 100%;
+    }
+
+    body {
+        background-image: url('Imagenes/icono1.jpg');
+        background-size: 75%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+</style>
+</head>
+
+<!-- HU2: Como instructor quiero ingresar el progreso de cada estudiante -->
+<section id="HU2">
+    <h2> Progreso del Estudiante</h2>
+    <!-- Formulario para ingresar progreso -->
+    <form>
+        <!-- Formulario -->
+        <div class="form-group">
+            <label for="nombreEstudianteHU2">Nombre del Estudiante</label>
+            <input type="text" class="form-control" id="nombreEstudianteHU2" placeholder="Nombre">
+        </div>
+        <div class="form-group">
+            <label for="examenAprobado">Cambio de Grado</label>
+            <input type="text" class="form-control" id="examenAprobado" placeholder="Examen">
+        </div>
+        <div class="form-group">
+            <label for="fechaAprobado">Fecha del Examen</label>
+            <input type="date" class="form-control" id="fechaAprobado" placeholder="Fecha">
+        </div>
+        <div class="form-group">
+            <label for="nivelAlcanzado">Nivel Alcanzado</label>
+            <input type="text" class="form-control" id="nivelAlcanzado" placeholder="Nivel">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Ingresar Progreso</button>
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NombreEstudiante)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CambioGrado)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaExamen)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NivelAlcanzado)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombreEstudiante)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CambioGrado)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaExamen.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NivelAlcanzado)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.ProgresoID }) |
+                        @Html.ActionLink("Detalles", "Details", new { id = item.ProgresoID }) |
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.ProgresoID })
+                    </td>
+                </tr>
+            }
+        </table>
+
+
+    </form>
+</section>

@@ -1,0 +1,53 @@
+﻿<!-- HU7: Como administrador quiero gestionar los pagos de los estudiantes -->
+<!-- Custom CSS -->
+<link rel="stylesheet" href="css/style.css">
+<!-- Custom Stylesheet -->
+<link rel="stylesheet" href="Estilo/StyleSheet1.css">
+<!-- Custom Styles for buttons -->
+<style>
+    .btn-primary,
+    .btn-secondary,
+    .btn-info {
+        background-color: #FFA500 !important;
+        border-color: #FFA500 !important;
+        color: white;
+    }
+
+    .navbar-brand {
+        color: #FFA500 !important;
+        text-align: center;
+        width: 100%;
+    }
+
+    body {
+        background-image: url('Imagenes/icono1.jpg');
+        background-size: 75%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+</style>
+</head>
+
+<section id="HU7">
+    <h2 class="text-warning">Gestión de Pagos de Estudiantes</h2>
+    <!-- Formulario para gestionar pagos -->
+
+    @using (Html.BeginForm("RegistrarPago", "Reporte", FormMethod.Post, new { @class = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <label for="nombreEstudiante">Nombre del Estudiante:</label>
+            <input type="text" class="form-control" id="nombreEstudiante" name="nombreEstudiante" placeholder="Nombre del Estudiante">
+        </div>
+        <div class="form-group">
+            <label for="montoPago">Monto del Pago:</label>
+            <input type="number" class="form-control" id="montoPago" name="montoPago" placeholder="Monto del Pago">
+        </div>
+        <div class="form-group">
+            <label for="fechaPago">Fecha del Pago:</label>
+            <input type="date" class="form-control" id="fechaPago" name="fechaPago">
+        </div>
+        <button type="submit" class="btn btn-warning">Registrar Pago</button>
+    }
+</section>
